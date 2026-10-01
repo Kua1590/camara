@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: digital-iris-relay
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 1 -b 0.0.0.0:$PORT relay_server:app
+    envVars:
+      - key: DIGITAL_IRIS_TOKEN
+        sync: false
